@@ -23,33 +23,28 @@ which is a Python binding to ImageMagick.
 Follow the instructions for your OS:
 * [Windows (64-bit)][8] *(Note: Typically it is not necessary to set the
   MAGICK_HOME environment variable.)*
-* [Mac][9]
-* [Linux - RedHat/Fedora/CentOS][10]
-* [Linux - Debian/Ubuntu][11]
+* [Linux / Mac][9]
 
 
 ## Basic usage (Windows 64-bit)
 
 1. Install ImageMagick as noted in the [Requirements](#requirements).
-2. Grab the latest release of [SpellCardMaker.exe][12].
+2. Grab the latest release of [SpellCardMaker.exe][10].
 3. Download a copy of [spells.yaml](/spell_data/spells.yaml).
 4. Place `SpellCardMaker.exe` and the `spells.yaml` input file in the same
 directory.
 5. Using a terminal such as Windows PowerShell, run one of the following
 example commands in that directory.
 
-### Example commands
-
 Generate a single spell card from `spells.yaml`:
 ```commandline
 ./SpellCardMaker generate spells.yaml -s "Spell Name" -o .
 ```
-------
+
 Generate cards for every spell in `spells.yaml`:
 ```commandline
 ./SpellCardMaker generate spells.yaml -o "Output Directory"
 ```
-------
 
 To abort in-progress spell card generation, press `CTRL`+`C` on most systems
 (keyboard interrupt) 
@@ -57,34 +52,28 @@ To abort in-progress spell card generation, press `CTRL`+`C` on most systems
 
 ## Advanced usage
 
-### Generation
-
 ```commandline
 ./SpellCardMaker generate INPUT_FILE [-o OUTPUT_DIR] [-s SINGLE_SPELL] [-c CONFIG]
 ```
 
-INPUT_FILE
-: Required. A file with spell information. This can be either a CSV or a YAML
+**INPUT_FILE** : _Required_ <br> A file with spell information. This can be either a CSV or a YAML
 file. See the examples included in this repository (spells.csv and spells.yaml).
 Example: `my_homebrew_spells.csv`
 
-OUTPUT_DIR
-: Optional. The folder to which spell card images are output, relative to the 
+**OUTPUT_DIR** : _Optional_ <br> The folder to which spell card images are output, relative to the 
 working directory (the location of the .exe). Cards are placed in a folder
 called `output` by default if this option is not specified. Example: `-o "Spell 
 Card Output"`. To output directly into the working directory, use `-o .`
 
-SINGLE_SPELL
-: Optional. A single spell to generate a card for. Example: `-s "Magic 
+**SINGLE_SPELL** : _Optional_ <br> A single spell to generate a card for. Example: `-s "Magic 
 Missile"`. If this is not specified, cards are generated for every spell that is
 included in the INPUT_FILE.
 
-CONFIG
-: Optional. A configuration file used to modify how spell cards are generated.
+**CONFIG** : _Optional_ <br> A configuration file used to modify how spell cards are generated.
 Example: `-c my_config.json`.
 
 
-### Configuration
+## Configuration
 
 Spell Card Maker supports the use of a configuration file to change many aspects
 of how spell cards are generated. For example, you can use a config file to 
@@ -98,7 +87,7 @@ To generate a default configuration file, use the following command:
 ```
 
 You can then update the file as desired, and specify the config file by using
-the `-c` option when running the [Generation](#generation) command.
+the `-c` option when running the [Generation](#advanced-usage) command.
 
 Images and fonts in the configuration file are often defined using a relative
 filepath. These files are bundled with the application by default, but you can
@@ -170,12 +159,12 @@ file will be stylized appropriately.
 
 ## Building the app
 
-[Pyinstaller][13] is used to build the app into a standalone executable for
+[Pyinstaller][11] is used to build the app into a standalone executable for
 release. If you would like to build the application for a non-Windows OS (or
 make other customizations), it should be fairly straightforward to do so. The
 included spec file (`SpellCardMaker.spec`) contains the required settings and
-configuration for building the app. It should be as easy as running the
-following command from the project directory:
+configuration for building the app. It should be as easy as installing
+Pyinstaller and then running the following command from the project directory:
 
 ```commandline
 pyinstaller SpellCardMaker.spec
@@ -190,8 +179,6 @@ pyinstaller SpellCardMaker.spec
 [6]: /docs/images/Resurrection.png
 [7]: https://docs.wand-py.org/en/0.6.13/
 [8]: https://docs.wand-py.org/en/latest/guide/install.html#install-imagemagick-windows
-[9]: https://docs.wand-py.org/en/latest/guide/install.html#install-imagemagick-mac
-[10]: https://docs.wand-py.org/en/latest/guide/install.html#install-imagemagick-redhat
-[11]: https://docs.wand-py.org/en/latest/guide/install.html#install-imagemagick-debian
-[12]: https://github.com/egocarib/Spell-Card-Maker/releases
-[13]: https://pyinstaller.org/en/v6.11.1/
+[9]: https://docs.wand-py.org/en/latest/guide/install.html#install-imagemagick-debian
+[10]: https://github.com/egocarib/Spell-Card-Maker/releases
+[11]: https://pyinstaller.org/en/v6.11.1/
